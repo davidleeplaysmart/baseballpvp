@@ -1,0 +1,24 @@
+{
+  "name": "baseballpvp",
+  "version": "0.0.1",
+  "description": "A baseball game!",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "test": "mocha"
+  },
+  "keywords": [
+    "baseball"
+  ],
+  "author": "DavidLee",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^3.5.1",
+    "express": "^4.16.3",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.5",
+    "npm": "^6.1.0"
+  }
+}
