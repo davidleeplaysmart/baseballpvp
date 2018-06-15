@@ -2,30 +2,33 @@
 
 A really small baseball game project
 
+### Pre-Installing
+
+Install node & yarn
+
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Install packages
 
 ```
-Give the example
+yarn make
 ```
 
-And repeat
+build react.js code
 
 ```
-until finished
+yarn build
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+run server
 
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+```
+yarn server
+```
+or to run at customize port
+```
+PORT=3000 yarn server
+```
 
 ## Authors
 

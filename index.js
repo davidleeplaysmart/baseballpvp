@@ -1,9 +1,14 @@
 const express = require('express');
-const app = express();
+const path = require('path')
 
-app.get('/', (req, res) => res.send('Hello World!'));
+const app = express();
+const port = process.env.PORT || 3001
+
 app.get('/api/hello', (req, res) => {
     res.send({ express: 'Hello From Express' });
 });
+app.use(express.static(path.resolve('./client/build'), {
+    maxage: '86400'
+}));
 
-app.listen(3001, () => console.log('Baseballpvp is running on port 3001'));
+app.listen(port, () => console.log(`Baseballpvp is running on port ${port}`));
