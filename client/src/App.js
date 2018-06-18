@@ -1,43 +1,36 @@
-import React, { Component } from 'react';
-import { Tag } from 'antd';
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { Route, NavLink } from 'react-router-dom';
+import Counter from './modules/counter/container';
+import About from './modules/about/container';
+import { Layout, Menu } from 'antd';
+import userIsAuthenticated  from './modules/auth'
 
-class App extends Component {
+const { Header, Content, Footer } = Layout;
 
-  state = {
-    response: ''
-  };
-
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-  }
-
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-  };
-
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Tag>{this.state.response}</Tag>
+const App = () => (
+  <Layout className="layout baseball-layout">
+    <Header className="baseball-header">
+      <Menu className="baseball-header-menu"
+        theme="dark"
+        mode="horizontal"
+        defaultSelectedKeys={['1']}
+      >
+        <Menu.Item key="1"><NavLink to="/about">Player</NavLink></Menu.Item>
+      </Menu>
+    </Header>
+    <Content className="baseball-content">
+      <div className="baseball-content-div">
+        <Route exact path="/" component={Counter} />
+        <Route path="/login" component={Counter} />
+        <Route path="/xd" component={About} />
+        <Route path="/about" component={userIsAuthenticated(About)} />
       </div>
-    );
-  }
-}
+    </Content>
+    <Footer style={{ textAlign: 'center' }}>
+      Baseball PvP ©2018 Created by David Lee
+    </Footer>
+  </Layout>
+);
 
 export default App;
